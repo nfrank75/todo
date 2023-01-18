@@ -1,0 +1,75 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<style>
+
+    body{
+        background-color: #638CB8;
+    }
+
+    input{
+        with: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+
+    input::placeholder {
+        color: #d3d3d3;
+    }
+
+    .submit{
+        background-color: #6BA3E8;
+    }
+
+    .center-column{
+        with: 600%;
+        padding: 20px;
+        margin: 20px auto;
+        background-color: #6BA3E8;
+        border-radius: 3px; 
+        box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
+    }
+
+    .item-row{
+        background-color: #6BA3E8;
+        margin: 10px;
+        padding: 20px;
+        border-radius: 3px;
+        color: #fff; 
+        box-shadow: 0px -1px 10px -4px rgba(0,0,0,0.75);
+    }
+
+
+    .btn-danger{
+        background-color: #ffae19;
+        border-color: #ea59400;
+    }
+
+</style
+
+    
+<div class='center-column'> 
+
+<form method='POST' action='/'>
+    {%  csrf_token  %}
+    {{form.name}}
+    <input class='btn btn-info' type="submit" name="Create Task">
+</form>
+  
+<div class='todo-list'>
+
+
+{% for do in todo %}
+    <div class='item-row'>
+        <a class='btn btn-sm btn-info' href='{% url 'update' do.id %}'> Update </a>
+        <a class='btn btn-sm btn-danger' href='{% url 'delete' do.id %}'> Delete </a>
+
+        {% if do.complete == True %}
+        <strike>{{do}}</strike>
+        {% else %}
+        <span>{{do}}</span>
+        {% endif %}
+    </div>
+{% endfor %}
+
+</div>
