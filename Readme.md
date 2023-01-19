@@ -8,6 +8,7 @@ these operations are so important for the ORM Django
 ### Installation
 
 python -m venv venv3
+source env/bin/activate
 pip3 install -r requirements.txt
 python3 manage.py migrate
 python3 manage.py createsuperuser
